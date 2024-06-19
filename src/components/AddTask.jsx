@@ -38,10 +38,10 @@ function AddTask() {
           ></i>
         </button>
         {isEditing ? (
-          <div className="flex items-center justify-between w-full">
+          <div className="flex items-center justify-between w-full h-full">
             <input
               type="text"
-              className="flex-grow h-full text-gray-700 border-none outline-none caret-sky-blue"
+              className="flex-grow text-gray-700 border-none outline-none caret-sky-blue"
               placeholder="Type to add new task"
               value={task}
               onChange={handleInputChange}

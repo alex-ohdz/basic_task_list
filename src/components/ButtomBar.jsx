@@ -1,4 +1,4 @@
-export default function Task() {
+function ButtonBar() {
   return (
     <div className="flex">
       <div className="flex items-center w-[1328px] space-x-3 ml-14 mt-2">
@@ -24,3 +24,5 @@ export default function Task() {
     </div>
   );
 }
+
+export default ButtonBar;
