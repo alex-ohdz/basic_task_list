@@ -1,16 +1,13 @@
 "use client";
-import { useEffect, useState } from "react";
-import feather from "feather-icons";
+import { useState } from "react";
 import { Avatar } from "@mui/material";
 import ButtonBar from "@/components/ButtonBar";
+import FeatherIcon from "@/components/FeatherIcon";
 
 function AddTask() {
   const [isEditing, setIsEditing] = useState(false);
   const [task, setTask] = useState("");
 
-  useEffect(() => {
-    feather.replace();
-  }, []);
 
   const handleButtonClick = () => {
     setIsEditing(true);
@@ -42,10 +39,7 @@ function AddTask() {
           }`}
         >
           <button onClick={handleButtonClick} className="active:text-blue-300">
-            <i
-              className="text-sky-blue active:text-blue-300"
-              data-feather="plus-square"
-            ></i>
+           <FeatherIcon icon="plus-square" className="text-sky-blue active:text-blue-300" />
           </button>
           {!isEditing ? (
             <div className="flex items-center justify-between w-full ">

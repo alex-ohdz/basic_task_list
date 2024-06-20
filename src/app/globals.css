@@ -40,18 +40,19 @@
   .icon-button {
     min-width: auto;
     border: none;
-    padding: 0;
+    padding: 8px;
   }
 
-  .icon-button i,
+  .icon-button .feather-icon,
   .icon-button svg {
     display: flex;
     gap: 8px;
-    margin: 8px;
-    /* font-size: 24px; */
+    /* margin: 5px; */
+    
   }
 
   .icon-button span {
     display: none;
   }
 }
+
