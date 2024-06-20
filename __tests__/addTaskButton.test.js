@@ -1,16 +1,17 @@
-import { render, fireEvent } from "@testing-library/react";
-import AddTask from "@/components/AddTask";
+import { render, fireEvent } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';  // Asegúrate de que esto esté presente
+import AddTask from '@/components/AddTask';
 
-test("renderizando AddTask y permitir escribir y tomar datos del input", () => {
+test('renderizando AddTask y permitir escribir y tomar datos del input', () => {
   const { getByPlaceholderText, getByText } = render(<AddTask />);
 
-  expect(getByText("Type to add new task")).toBeInTheDocument();
+  expect(getByText('Type to add new task')).toBeInTheDocument();
 
-  fireEvent.click(getByText("Type to add new task"));
+  fireEvent.click(getByText('Type to add new task'));
 
-  const input = getByPlaceholderText("Type to add new task");
+  const input = getByPlaceholderText('Type to add new task');
   expect(input).toBeInTheDocument();
 
-  fireEvent.change(input, { target: { value: "New Task" } });
-  expect(input.value).toBe("New Task");
+  fireEvent.change(input, { target: { value: 'New Task' } });
+  expect(input.value).toBe('New Task');
 });

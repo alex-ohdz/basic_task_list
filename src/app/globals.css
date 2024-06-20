@@ -2,10 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
-.text-h {
-	font-family: 'Roboto', sans-serif;
-  }
-  .text-m {
-	font-family: 'Roboto', sans-serif;
-	font-weight: 500;
-  }
+.text-input {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+}
+.text-m {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  text-decoration: #8A94A6;
+}
+.bg_gray {
+  background-color: rgb(242, 245, 248);
+}
+.btnBar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  border-width: 1px;
+  border-radius: 4px;
+  opacity: 0.5;
+  border-color: #c6cdd2;
+  gap: 12px;
+}
