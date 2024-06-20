@@ -27,32 +27,32 @@ function ButtonBar() {
             isMobile ? "icon-button" : "min-w-[111px]"
           }`}
         >
-          <FeatherIcon icon="maximize-2" testid="maximize-2" />
+          <FeatherIcon icon="maximize-2" data-testid="maximize-2" />
           {!isMobile && <span>Open</span>}
         </button>
         <div className="flex gap-1">
            <button
             className={`btnBar ${isMobile ? "icon-button" : "min-w-[117px]"}`}
           >
-            <FeatherIcon icon="calendar" testid="calendar" />
+            <FeatherIcon icon="calendar" data-testid="calendar" />
             {!isMobile && <span>Today</span>}
           </button>
           <button
             className={`btnBar ${isMobile ? "icon-button" : "min-w-[119px]"}`}
           >
-            <FeatherIcon icon="unlock" testid="unlock" />
+            <FeatherIcon icon="unlock" data-testid="unlock" />
             {!isMobile && <span>Public</span>}
           </button>
           <button
             className={`btnBar ${isMobile ? "icon-button" : "min-w-[139px]"}`}
           >
-            <LightIcon className="w-6 h-6" testid="light-icon" />
+            <LightIcon className="w-6 h-6" data-testid="light-icon" />
             {!isMobile && <span>Highlight</span>}
           </button>
           <button
             className={`btnBar ${isMobile ? "icon-button" : "min-w-[150px]"}`}
           >
-            <CircleIcon className="w-6 h-6" testid="circle-icon" />
+            <CircleIcon className="w-6 h-6" data-testid="circle-icon" />
             {!isMobile && <span>Estimation</span>}
           </button>
         </div>
@@ -60,7 +60,7 @@ function ButtonBar() {
       <div className="flex gap-1">
         {isMobile ? (
           <button className="bg-customBlue rounded min-w-[75px] icon-button text-white">
-            <FeatherIcon icon="plus" testid="plus" />
+            <FeatherIcon icon="plus" data-testid="plus" />
           </button>
         ) : (
           <>
