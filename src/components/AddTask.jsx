@@ -33,17 +33,21 @@ function AddTask() {
     <div className="flex flex-col max-w-[1360px] items-center mx-10 mt-14">
       <div
         className={`flex w-full flex-col bg-white ${
-          isEditing ? " shadow-custom2 rounded-lg" : ""
+          !isEditing ? " shadow-custom rounded" : ""
         }`}
       >
-        <div className="flex items-center gap-3 pl-4 pt-3 pb-6 ">
+        <div
+          className={`flex items-center gap-3 pl-4 pt-3 pb-6 ${
+            !isEditing ? "shadow-border-top rounded-t" : ""
+          }`}
+        >
           <button onClick={handleButtonClick} className="active:text-blue-300">
             <i
               className="text-sky-blue active:text-blue-300"
               data-feather="plus-square"
             ></i>
           </button>
-          {isEditing ? (
+          {!isEditing ? (
             <div className="flex items-center justify-between w-full ">
               <input
                 type="text"
@@ -72,7 +76,7 @@ function AddTask() {
             </button>
           )}
         </div>
-        {isEditing && <ButtonBar />}
+        {!isEditing && <ButtonBar />}
       </div>
     </div>
   );

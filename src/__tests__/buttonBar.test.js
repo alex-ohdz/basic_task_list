@@ -37,10 +37,10 @@ describe('ButtonBar', () => {
     expect(circleIcon).toBeInTheDocument();
   });
 
-  test('renders Cancel and Add buttons', () => {
+  test('renders Cancel and Ok buttons', () => {
     render(<ButtonBar />);
     const cancelButton = screen.getByText('Cancel');
-    const addButton = screen.getByText('Add');
+    const addButton = screen.getByText('Ok');
 
     expect(cancelButton).toBeInTheDocument();
     expect(addButton).toBeInTheDocument();
