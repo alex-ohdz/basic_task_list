@@ -13,24 +13,24 @@ function ButtonBar() {
     <div className="flex justify-between items-center p-2 border-t shadow-custom1">
       <div className="flex gap-8 text-m">
         <button className="flex items-center gap-3 bg_gray h-10 w-[111px] justify-center rounded">
-          <i data-feather="maximize-2"></i>
+          <i data-feather="maximize-2" data-testid="maximize-2"></i>
           <span>Open</span>
         </button>
         <div className="flex gap-1">
           <button className="btnBar min-w-[117px]">
-            <i data-feather="calendar" className="customGray"></i>
+            <i data-feather="calendar" className="customGray" data-testid="calendar"></i>
             <span>Today</span>
           </button>
           <button className="btnBar min-w-[119px]">
-            <i data-feather="unlock"></i>
+            <i data-feather="unlock" data-testid="unlock"></i>
             <span>Public</span>
           </button>
           <button className="btnBar min-w-[139px]">
-            <LightIcon className="w-6 h-6" />
+            <LightIcon className="w-6 h-6" data-testid="light-icon" />
             <span>Highlight</span>
           </button>
           <button className="btnBar min-w-[150px]">
-            <CircleIcon className="w-6 h-6" />
+            <CircleIcon className="w-6 h-6" data-testid="circle-icon" />
             <span>Estimation</span>
           </button>
         </div>

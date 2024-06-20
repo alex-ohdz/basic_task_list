@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';  // Asegúrate de que esto esté presente
+import '@testing-library/jest-dom';
 import ButtonBar from '@/components/ButtonBar';
 
 jest.mock('@/public/icons/Circle.svg', () => () => (<svg data-testid="circle-icon"></svg>));
