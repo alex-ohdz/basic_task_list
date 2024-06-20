@@ -16,6 +16,7 @@
 .bg_gray {
   background-color: rgb(242, 245, 248);
 }
+/* ================================== */
 .btnBar {
   display: flex;
   align-items: center;
@@ -27,6 +28,18 @@
   border-color: #c6cdd2;
   gap: 12px;
 }
+
+.btnBar.disabled {
+  color: rgb(138, 148, 166);
+}
+
+button.disabled span,
+button.disabled svg {
+  color: rgb(138, 148, 166);
+  stroke: rgb(138, 148, 166);
+}
+
+/* =================================== */
 
 .shadow-custom {
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.04), 

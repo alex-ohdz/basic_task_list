@@ -8,7 +8,6 @@ function AddTask() {
   const [isEditing, setIsEditing] = useState(false);
   const [task, setTask] = useState("");
 
-
   const handleButtonClick = () => {
     setIsEditing(true);
   };
@@ -30,18 +29,18 @@ function AddTask() {
     <div className="flex flex-col max-w-[1360px] items-center mx-10 mt-14">
       <div
         className={`flex w-full flex-col bg-white ${
-          !isEditing ? " shadow-custom rounded" : ""
+          isEditing ? " shadow-custom rounded" : ""
         }`}
       >
         <div
           className={`flex items-center gap-3 pl-4 pt-3 pb-6 ${
-            !isEditing ? "shadow-border-top rounded-t" : ""
+            isEditing ? "shadow-border-top rounded-t" : ""
           }`}
         >
           <button onClick={handleButtonClick} className="active:text-blue-300">
-           <FeatherIcon icon="plus-square" className="text-sky-blue active:text-blue-300" />
+            <FeatherIcon icon="plus-square" className="text-sky-blue active:text-blue-300" />
           </button>
-          {!isEditing ? (
+          {isEditing ? (
             <div className="flex items-center justify-between w-full ">
               <input
                 type="text"
@@ -70,7 +69,7 @@ function AddTask() {
             </button>
           )}
         </div>
-        {!isEditing && <ButtonBar />}
+        {isEditing && <ButtonBar disabled={task.trim() === ""} />}
       </div>
     </div>
   );
