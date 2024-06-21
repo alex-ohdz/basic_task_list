@@ -1,35 +1,29 @@
 "use client";
-import { useState } from "react";
+import { useTaskInput } from "@/hooks/useTaskInput";
 import { Avatar } from "@mui/material";
 import ButtonBar from "@/components/ButtonBar";
 import FeatherIcon from "@/components/FeatherIcon";
 
 function AddTask() {
-  const [isEditing, setIsEditing] = useState(false);
-  const [task, setTask] = useState("");
+  const {
+    task,
+    isTaskEmpty,
+    isEditing,
+    setIsEditing,
+    handleInputChange,
+    handleInputBlur,
+    handleIconClick,
+  } = useTaskInput();
 
   const handleButtonClick = () => {
     setIsEditing(true);
-  };
-
-  const handleInputChange = (e) => {
-    setTask(e.target.value);
-  };
-
-  const handleInputBlur = () => {
-    if (task.trim() === "") {
-      setIsEditing(false);
-    } else {
-      console.log("Nueva tarea:", task);
-      setIsEditing(false);
-    }
   };
 
   return (
     <div className="flex flex-col max-w-[1360px] items-center mx-10 mt-14">
       <div
         className={`flex w-full flex-col bg-white ${
-          isEditing ? " shadow-custom rounded" : ""
+          isEditing ? "shadow-custom rounded" : ""
         }`}
       >
         <div
@@ -38,17 +32,24 @@ function AddTask() {
           }`}
         >
           <button onClick={handleButtonClick} className="active:text-blue-300">
-            <FeatherIcon icon="plus-square" className="text-sky-blue active:text-blue-300" />
+            <FeatherIcon
+              icon="plus-square"
+              className="text-sky-blue active:text-blue-300"
+            />
           </button>
           {isEditing ? (
-            <div className="flex items-center justify-between w-full ">
+            <div className="flex items-center justify-between w-full">
               <input
                 type="text"
                 className="flex-grow text-customGray2 border-none outline-none caret-sky-blue text-input"
                 placeholder="Type to add new task"
                 value={task}
                 onChange={handleInputChange}
-                onBlur={handleInputBlur}
+                onBlur={() => {
+                  if (!handleInputBlur()) {
+                    setIsEditing(false);
+                  }
+                }}
                 autoFocus
               />
               <Avatar
@@ -69,7 +70,17 @@ function AddTask() {
             </button>
           )}
         </div>
-        {isEditing && <ButtonBar disabled={task.trim() === ""} />}
+        {isEditing && (
+          <ButtonBar
+            isTaskEmpty={isTaskEmpty}
+            setIsEditing={setIsEditing}
+            handleIconClick={() => {
+              if (handleIconClick()) {
+                setIsEditing(false);
+              }
+            }}
+          />
+        )}
       </div>
     </div>
   );
