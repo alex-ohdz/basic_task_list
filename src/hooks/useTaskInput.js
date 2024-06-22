@@ -7,6 +7,9 @@ export function useTaskInput() {
   const textareaRef = useRef(null);
 
   const emailRegex = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/;
+  const userRegex = /(^|\s)@\w+/;
+  const linkRegex = /(^|\s)\bhttps?:\/\/\S+/;
+  const hashtagRegex = /(^|\s)#\w+/;
 
   const handleInputChange = (e) => {
     setTask(e.target.value);
@@ -50,7 +53,13 @@ export function useTaskInput() {
         const words = prevTask.split(' ');
         const lastWord = words.pop();
         if (emailRegex.test(lastWord)) {
-          words.push(`<span style="color: green;">${lastWord}</span>`);
+          words.push(`<span style="color: green ;">${lastWord}</span>`);
+        } else if (userRegex.test(lastWord)) {
+          words.push(`<span style="color: blue;">${lastWord}</span>`);
+        } else if (linkRegex.test(lastWord)) {
+          words.push(`<span style="color: purple;">${lastWord}</span>`);
+        } else if (hashtagRegex.test(lastWord)) {
+          words.push(`<span style="color: orange;">${lastWord}</span>`);
         } else {
           words.push(lastWord);
         }
@@ -63,6 +72,15 @@ export function useTaskInput() {
     return task.split(' ').map(word => {
       if (emailRegex.test(word)) {
         return `<span style="color: green;">${word}</span>`;
+      }
+      if (userRegex.test(word)) {
+        return `<span style="color: blue;">${word}</span>`;
+      }
+      if (linkRegex.test(word)) {
+        return `<span style="color: purple;">${word}</span>`;
+      }
+      if (hashtagRegex.test(word)) {
+        return `<span style="color: orange;">${word}</span>`;
       }
       return word;
     }).join(' ');
