@@ -16,12 +16,12 @@ function AddTask() {
     handleIconClick,
     handleFormatText,
     textareaRef,
+    formattedTask,
   } = useTaskInput();
 
   const handleButtonClick = () => {
     setIsEditing(true);
   };
-
 
   useEffect(() => {
     const updateLabelWidth = () => {
@@ -40,7 +40,6 @@ function AddTask() {
       window.removeEventListener('resize', updateLabelWidth);
     };
   }, [textareaRef, task]);
-  
 
   return (
     <div className="flex flex-col max-w-[1360px] items-center mx-10 mt-14">
@@ -61,7 +60,7 @@ function AddTask() {
             >
               <FeatherIcon
                 icon="plus-square"
-                className=" text-sky-blue active:text-blue-300"
+                className="text-sky-blue active:text-blue-300"
               />
             </button>
           </div>
@@ -71,9 +70,8 @@ function AddTask() {
                 id="label"
                 className="absolute text-input break-all resize-none overflow-hidden pointer-events-none"
                 style={{ left: "95px", top: "68px" }}
-              >
-                {task}
-              </label>
+                dangerouslySetInnerHTML={{ __html: formattedTask }}
+              />
               <textarea
                 ref={textareaRef}
                 className="w-full text-transparent border-none outline-none caret-sky-blue text-input break-all resize-none overflow-hidden"
@@ -88,7 +86,6 @@ function AddTask() {
                 }}
                 autoFocus
               />
-
               <div className="flex w-11">
                 <Avatar
                   alt="image"

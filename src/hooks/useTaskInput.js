@@ -44,9 +44,32 @@ export function useTaskInput() {
 
   const handleFormatText = (e) => {
     if (e.key === " ") {
-      console.log("perro");
+      setTask((prevTask) => {
+        const words = prevTask.split(' ');
+        const lastWord = words.pop();
+        if (lastWord === "perro") {
+          words.push(`<span style="color: green;">${lastWord}</span>`);
+        } else {
+          words.push(lastWord);
+        }
+        return words.join(' ') + ' ';
+      });
     }
   };
+
+  const formatTask = (task) => {
+    return task.split(' ').map(word => {
+      if (word === "<span style=\"color: green;\">perro</span>") {
+        return word;
+      }
+      if (word === "perro") {
+        return `<span style="color: green;">${word}</span>`;
+      }
+      return word;
+    }).join(' ');
+  };
+
+  const formattedTask = formatTask(task);
 
   const isTaskEmpty = task.trim() === "";
 
@@ -61,5 +84,6 @@ export function useTaskInput() {
     handleIconClick,
     handleFormatText,
     textareaRef,
+    formattedTask,
   };
 }
