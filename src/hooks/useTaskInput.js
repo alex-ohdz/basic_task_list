@@ -6,6 +6,8 @@ export function useTaskInput() {
   const [isEditing, setIsEditing] = useState(false);
   const textareaRef = useRef(null);
 
+  const emailRegex = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/;
+
   const handleInputChange = (e) => {
     setTask(e.target.value);
     adjustTextareaHeight();
@@ -47,7 +49,7 @@ export function useTaskInput() {
       setTask((prevTask) => {
         const words = prevTask.split(' ');
         const lastWord = words.pop();
-        if (lastWord === "perro") {
+        if (emailRegex.test(lastWord)) {
           words.push(`<span style="color: green;">${lastWord}</span>`);
         } else {
           words.push(lastWord);
@@ -59,10 +61,7 @@ export function useTaskInput() {
 
   const formatTask = (task) => {
     return task.split(' ').map(word => {
-      if (word === "<span style=\"color: green;\">perro</span>") {
-        return word;
-      }
-      if (word === "perro") {
+      if (emailRegex.test(word)) {
         return `<span style="color: green;">${word}</span>`;
       }
       return word;
