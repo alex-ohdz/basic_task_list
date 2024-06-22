@@ -45,18 +45,18 @@ function AddTask() {
     <div className="flex flex-col max-w-[1360px] items-center mx-10 mt-14">
       <div
         className={`flex w-full flex-col bg-white ${
-          !isEditing ? "shadow-custom rounded" : ""
+            isEditing ? "shadow-custom rounded" : ""
         }`}
       >
         <div
           className={`flex items-center gap-3 pl-4 pt-3 pb-6 ${
-            !isEditing ? "shadow-border-top rounded-t" : ""
+              isEditing ? "shadow-border-top rounded-t" : ""
           }`}
         >
           <div className="flex w-7">
             <button
               onClick={handleButtonClick}
-              className="absolute top-[69px] active:text-blue-300"
+              className="absolute top-[68px] active:text-blue-300"
             >
               <FeatherIcon
                 icon="plus-square"
@@ -64,7 +64,7 @@ function AddTask() {
               />
             </button>
           </div>
-          {!isEditing ? (
+          {  isEditing ? (
             <div className="flex w-full">
               <label
                 id="label"
@@ -106,7 +106,7 @@ function AddTask() {
             </button>
           )}
         </div>
-        {!isEditing && (
+        {  isEditing && (
           <ButtonBar
             isTaskEmpty={isTaskEmpty}
             setIsEditing={setIsEditing}
