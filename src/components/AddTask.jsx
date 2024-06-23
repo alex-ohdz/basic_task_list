@@ -107,15 +107,11 @@ function AddTask() {
           )}
         </div>
         {  isEditing && (
-          <ButtonBar
-            isTaskEmpty={isTaskEmpty}
-            setIsEditing={setIsEditing}
-            handleIconClick={() => {
-              if (handleIconClick()) {
-                setIsEditing(false);
-              }
-            }}
-          />
+           <ButtonBar
+           isTaskEmpty={isTaskEmpty}
+           setIsEditing={setIsEditing}
+           handleIconClick={handleIconClick}
+         />
         )}
       </div>
     </div>

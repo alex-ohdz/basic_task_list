@@ -58,10 +58,10 @@ function ButtonBar({ isTaskEmpty, handleIconClick, setIsEditing }) {
         </div>
       </div>
       <div className="flex gap-1">
-        {isMobile ? (
+      {isMobile ? (
           <button
-            onClick={() => {
-              if (handleIconClick()) {
+            onClick={async () => {
+              if (await handleIconClick()) {
                 setIsEditing(false);
               }
             }}
@@ -78,8 +78,8 @@ function ButtonBar({ isTaskEmpty, handleIconClick, setIsEditing }) {
               Cancel
             </button>
             <button
-              onClick={() => {
-                if (handleIconClick()) {
+               onClick={async () => {
+                if (await handleIconClick()) {
                   setIsEditing(false);
                 }
               }}

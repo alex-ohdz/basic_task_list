@@ -37,13 +37,27 @@ export function useTaskInput() {
     }
   };
 
-  const handleIconClick = (e) => {
+  const handleIconClick = async (e) => {
     if (task.trim() === "") {
       setTask("");
       return false;
     } else {
-      console.log("Click");
-      return true;
+      try {
+        const response = await fetch('/api/addTask', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ texto: task }),
+        });
+        const data = await response.json();
+        console.log('Task added:', data);
+        setTask("");
+        return true;
+      } catch (error) {
+        console.error('Error adding task:', error);
+        return false;
+      }
     }
   };
 
