@@ -1,5 +1,3 @@
-// utils/formatTask.js
-
 const emailRegex = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/;
 const userRegex = /(^|\s)@\w+/;
 const linkRegex = /(^|\s)\bhttps?:\/\/\S+/;

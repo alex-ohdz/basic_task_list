@@ -51,7 +51,7 @@ button.disabled svg {
   box-shadow: 0px 0.2px 3px 0.3px rgba(0, 0, 0, 0.1);
 }
 
-/* Estilos para cuando la pantalla es menor a 1230px */
+/* ==================================== */
 @media (max-width: 1230px) {
   .icon-button {
     min-width: auto;
@@ -63,8 +63,6 @@ button.disabled svg {
   .icon-button svg {
     display: flex;
     gap: 8px;
-    /* margin: 5px; */
-    
   }
 
   .icon-button span {

@@ -49,7 +49,7 @@ export function useTaskInput() {
         const data = await response.json();
         console.log('Task added:', data);
         setTask("");
-        return data; // Devolver la tarea agregada
+        return data; 
       } catch (error) {
         console.error('Error adding task:', error);
         return false;
