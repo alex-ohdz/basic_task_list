@@ -1,15 +1,11 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
+import { formatTask, handleFormatText } from '@/utils/formatTask';
 
 export function useTaskInput() {
   const [task, setTask] = useState("");
   const [isEditing, setIsEditing] = useState(false);
   const textareaRef = useRef(null);
-
-  const emailRegex = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/;
-  const userRegex = /(^|\s)@\w+/;
-  const linkRegex = /(^|\s)\bhttps?:\/\/\S+/;
-  const hashtagRegex = /(^|\s)#\w+/;
 
   const handleInputChange = (e) => {
     setTask(e.target.value);
@@ -37,7 +33,7 @@ export function useTaskInput() {
     }
   };
 
-  const handleIconClick = async (e) => {
+  const handleIconClick = async () => {
     if (task.trim() === "") {
       setTask("");
       return false;
@@ -53,7 +49,7 @@ export function useTaskInput() {
         const data = await response.json();
         console.log('Task added:', data);
         setTask("");
-        return true;
+        return data; // Devolver la tarea agregada
       } catch (error) {
         console.error('Error adding task:', error);
         return false;
@@ -61,43 +57,8 @@ export function useTaskInput() {
     }
   };
 
-  const handleFormatText = (e) => {
-    if (e.key === " ") {
-      setTask((prevTask) => {
-        const words = prevTask.split(' ');
-        const lastWord = words.pop();
-        if (emailRegex.test(lastWord)) {
-          words.push(`<span style="color: green ;">${lastWord}</span>`);
-        } else if (userRegex.test(lastWord)) {
-          words.push(`<span style="color: blue;">${lastWord}</span>`);
-        } else if (linkRegex.test(lastWord)) {
-          words.push(`<span style="color: purple;">${lastWord}</span>`);
-        } else if (hashtagRegex.test(lastWord)) {
-          words.push(`<span style="color: orange;">${lastWord}</span>`);
-        } else {
-          words.push(lastWord);
-        }
-        return words.join(' ') + ' ';
-      });
-    }
-  };
-
-  const formatTask = (task) => {
-    return task.split(' ').map(word => {
-      if (emailRegex.test(word)) {
-        return `<span style="color: green;">${word}</span>`;
-      }
-      if (userRegex.test(word)) {
-        return `<span style="color: blue;">${word}</span>`;
-      }
-      if (linkRegex.test(word)) {
-        return `<span style="color: purple;">${word}</span>`;
-      }
-      if (hashtagRegex.test(word)) {
-        return `<span style="color: orange;">${word}</span>`;
-      }
-      return word;
-    }).join(' ');
+  const handleKeyUp = (e) => {
+    setTask(prevTask => handleFormatText(prevTask, e.key));
   };
 
   const formattedTask = formatTask(task);
@@ -113,7 +74,7 @@ export function useTaskInput() {
     handleInputChange,
     handleInputBlur,
     handleIconClick,
-    handleFormatText,
+    handleKeyUp,
     textareaRef,
     formattedTask,
   };

@@ -3,7 +3,7 @@ import { useIsMobile } from "@/hooks/useIsMobile";
 import CircleIcon from "@/public/icons/Circle.svg";
 import FeatherIcon from "@/components/FeatherIcon";
 
-function ButtonBar({ isTaskEmpty, handleIconClick, setIsEditing }) {
+function ButtonBar({ isTaskEmpty, handleIconClick, setIsEditing, addTaskToList }) {
   const isMobile = useIsMobile();
 
   return (
@@ -58,10 +58,12 @@ function ButtonBar({ isTaskEmpty, handleIconClick, setIsEditing }) {
         </div>
       </div>
       <div className="flex gap-1">
-      {isMobile ? (
+        {isMobile ? (
           <button
             onClick={async () => {
-              if (await handleIconClick()) {
+              const newTask = await handleIconClick();
+              if (newTask) {
+                addTaskToList(newTask); // Add the new task to the list
                 setIsEditing(false);
               }
             }}
@@ -78,8 +80,10 @@ function ButtonBar({ isTaskEmpty, handleIconClick, setIsEditing }) {
               Cancel
             </button>
             <button
-               onClick={async () => {
-                if (await handleIconClick()) {
+              onClick={async () => {
+                const newTask = await handleIconClick();
+                if (newTask) {
+                  addTaskToList(newTask); // Add the new task to the list
                   setIsEditing(false);
                 }
               }}

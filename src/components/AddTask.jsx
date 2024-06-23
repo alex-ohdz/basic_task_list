@@ -5,7 +5,7 @@ import ButtonBar from "@/components/ButtonBar";
 import FeatherIcon from "@/components/FeatherIcon";
 import { useEffect } from "react";
 
-function AddTask() {
+function AddTask({ addTaskToList }) {
   const {
     task,
     isTaskEmpty,
@@ -64,7 +64,7 @@ function AddTask() {
               />
             </button>
           </div>
-          {  isEditing ? (
+          {isEditing ? (
             <div className="flex w-full">
               <label
                 id="label"
@@ -106,12 +106,13 @@ function AddTask() {
             </button>
           )}
         </div>
-        {  isEditing && (
-           <ButtonBar
-           isTaskEmpty={isTaskEmpty}
-           setIsEditing={setIsEditing}
-           handleIconClick={handleIconClick}
-         />
+        {isEditing && (
+          <ButtonBar
+            isTaskEmpty={isTaskEmpty}
+            setIsEditing={setIsEditing}
+            handleIconClick={handleIconClick}
+            addTaskToList={addTaskToList}
+          />
         )}
       </div>
     </div>
