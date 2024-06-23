@@ -63,7 +63,7 @@ function ButtonBar({ isTaskEmpty, handleIconClick, setIsEditing, addTaskToList }
             onClick={async () => {
               const newTask = await handleIconClick();
               if (newTask) {
-                addTaskToList(newTask); // Add the new task to the list
+                addTaskToList(newTask); 
                 setIsEditing(false);
               }
             }}
@@ -83,7 +83,7 @@ function ButtonBar({ isTaskEmpty, handleIconClick, setIsEditing, addTaskToList }
               onClick={async () => {
                 const newTask = await handleIconClick();
                 if (newTask) {
-                  addTaskToList(newTask); // Add the new task to the list
+                  addTaskToList(newTask); 
                   setIsEditing(false);
                 }
               }}

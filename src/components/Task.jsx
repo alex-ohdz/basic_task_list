@@ -1,4 +1,4 @@
-export default function Task({ id, texto, formattedText, onDelete }) {
+export default function Task({ id, formattedText, onDelete }) {
 	const handleCheckboxChange = async () => {
 	  try {
 		const response = await fetch('/api/deleteTask', {

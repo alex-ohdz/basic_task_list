@@ -4,34 +4,34 @@ import ButtonBar from '@/components/ButtonBar';
 
 describe('ButtonBar', () => {
   test('renders all icons with data-testid', () => {
-    render(<ButtonBar />);
+    render(<ButtonBar isTaskEmpty={false} />);
 
     expect(screen.getByTestId('maximize-2')).toBeInTheDocument();
     expect(screen.getByTestId('calendar')).toBeInTheDocument();
     expect(screen.getByTestId('unlock')).toBeInTheDocument();
-    expect(screen.getByTestId('light-icon')).toBeInTheDocument();
+    expect(screen.getByTestId('sun')).toBeInTheDocument(); // Cambiado de light-icon a sun
     expect(screen.getByTestId('circle-icon')).toBeInTheDocument();
     expect(screen.getByTestId('plus')).toBeInTheDocument();
   });
 
-  test('renders Cancel and Ok buttons in desktop view', () => {
-    // Force desktop view
+  test('renders Cancel and Add buttons in desktop view', () => {
+    // Forzar vista de escritorio
     global.innerWidth = 1300;
     global.dispatchEvent(new Event('resize'));
 
-    render(<ButtonBar />);
+    render(<ButtonBar isTaskEmpty={false} />);
     expect(screen.getByText('Cancel')).toBeInTheDocument();
-    expect(screen.getByText('Ok')).toBeInTheDocument();
+    expect(screen.getByText('Add')).toBeInTheDocument(); // Cambiado de Ok a Add
   });
 
   test('renders icon buttons in mobile view', () => {
-    // Force mobile view
-    global.innerWidth = 1000;
+    // Forzar vista móvil
+    global.innerWidth = 500;
     global.dispatchEvent(new Event('resize'));
 
-    render(<ButtonBar />);
+    render(<ButtonBar isTaskEmpty={false} />);
     expect(screen.queryByText('Cancel')).not.toBeInTheDocument();
-    expect(screen.queryByText('Ok')).not.toBeInTheDocument();
+    expect(screen.queryByText('Add')).not.toBeInTheDocument(); // Cambiado de Ok a Add
     expect(screen.getByTestId('plus')).toBeInTheDocument();
   });
 });
