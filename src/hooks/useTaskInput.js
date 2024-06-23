@@ -28,7 +28,6 @@ export function useTaskInput() {
     if (task.trim() === "") {
       return false;
     } else {
-      console.log("Nueva tarea:", task);
       return true;
     }
   };
@@ -47,7 +46,6 @@ export function useTaskInput() {
           body: JSON.stringify({ texto: task }),
         });
         const data = await response.json();
-        console.log('Task added:', data);
         setTask("");
         return data; 
       } catch (error) {
