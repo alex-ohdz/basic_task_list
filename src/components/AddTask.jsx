@@ -9,7 +9,7 @@ function AddTask({ addTaskToList }) {
   const {
     task,
     isTaskEmpty,
-    isEditing,
+  isEditing,
     setIsEditing,
     handleInputChange,
     handleInputBlur,
@@ -45,7 +45,7 @@ function AddTask({ addTaskToList }) {
     <div className="flex flex-col max-w-[1360px] items-center mx-10 mt-14">
       <div
         className={`flex w-full flex-col bg-white ${
-            isEditing ? "shadow-custom rounded" : ""
+            isEditing ? "shadow-custom rounded" : "mb-[-25px]"
         }`}
       >
         <div

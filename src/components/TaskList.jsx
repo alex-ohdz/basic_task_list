@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import Task from './Task';
 import AddTask from './AddTask';
+import { formatTask } from '@/utils/formatTask'; 
 
 export default function TaskList() {
   const [tasks, setTasks] = useState([]);
@@ -12,7 +13,7 @@ export default function TaskList() {
         const response = await fetch('/api/getTasks');
         const data = await response.json();
         if (Array.isArray(data)) {
-          setTasks(data);
+          setTasks(data.map(task => ({ ...task, formattedText: formatTask(task.texto) }))); 
         } else {
           console.error('Unexpected data format:', data);
         }
@@ -25,7 +26,8 @@ export default function TaskList() {
   }, []);
 
   const addTaskToList = (newTask) => {
-    setTasks([newTask, ...tasks]); // Add the new task to the beginning of the list
+    const formattedTask = { ...newTask, formattedText: formatTask(newTask.texto) };
+    setTasks([formattedTask, ...tasks]); 
   };
 
   const handleDelete = (id) => {
@@ -36,7 +38,7 @@ export default function TaskList() {
     <div className="flex flex-col gap-3 gap-y-5">
       <AddTask addTaskToList={addTaskToList} />
       {Array.isArray(tasks) && tasks.map((task) => (
-        <Task key={task.id} id={task.id} texto={task.texto} onDelete={handleDelete} />
+        <Task key={task.id} id={task.id} texto={task.texto} formattedText={task.formattedText} onDelete={handleDelete} />
       ))}
     </div>
   );

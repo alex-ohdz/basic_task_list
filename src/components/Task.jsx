@@ -1,4 +1,4 @@
-export default function Task({ id, texto, onDelete }) {
+export default function Task({ id, texto, formattedText, onDelete }) {
 	const handleCheckboxChange = async () => {
 	  try {
 		const response = await fetch('/api/deleteTask', {
@@ -27,8 +27,7 @@ export default function Task({ id, texto, onDelete }) {
 		  id={`task-checkbox-${id}`}
 		  onChange={handleCheckboxChange}
 		/>
-		<label htmlFor={`task-checkbox-${id}`} className="text-input">
-		  {texto}
+		<label htmlFor={`task-checkbox-${id}`} className="text-input" dangerouslySetInnerHTML={{ __html: formattedText }}>
 		</label>
 	  </div>
 	);
