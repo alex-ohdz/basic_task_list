@@ -9,7 +9,7 @@ function AddTask({ addTaskToList }) {
   const {
     task,
     isTaskEmpty,
-  isEditing,
+    isEditing,
     setIsEditing,
     handleInputChange,
     handleInputBlur,
@@ -26,7 +26,7 @@ function AddTask({ addTaskToList }) {
   useEffect(() => {
     const updateLabelWidth = () => {
       if (textareaRef.current) {
-        const label = document.getElementById('label');
+        const label = document.getElementById("label");
         if (label) {
           label.style.width = `${textareaRef.current.clientWidth}px`;
         }
@@ -34,10 +34,10 @@ function AddTask({ addTaskToList }) {
     };
 
     updateLabelWidth();
-    window.addEventListener('resize', updateLabelWidth);
+    window.addEventListener("resize", updateLabelWidth);
 
     return () => {
-      window.removeEventListener('resize', updateLabelWidth);
+      window.removeEventListener("resize", updateLabelWidth);
     };
   }, [textareaRef, task]);
 
@@ -45,12 +45,12 @@ function AddTask({ addTaskToList }) {
     <div className="flex flex-col max-w-[1360px] items-center mx-10 mt-14">
       <div
         className={`flex w-full flex-col bg-white ${
-            isEditing ? "shadow-custom rounded" : "mb-[-25px]"
+          isEditing ? "shadow-custom rounded" : "mb-[-25px]"
         }`}
       >
         <div
-          className={`flex items-center gap-3 pl-4 pt-3 pb-6 ${
-              isEditing ? "shadow-border-top rounded-t" : ""
+          className={`flex items-center gap-3 pl-4 pt-3  ${
+            isEditing ? "shadow-border-top rounded-t" : "mb-6"
           }`}
         >
           <div className="flex w-7">

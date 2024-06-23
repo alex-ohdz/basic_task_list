@@ -7,8 +7,8 @@ function ButtonBar({ isTaskEmpty, handleIconClick, setIsEditing, addTaskToList }
   const isMobile = useIsMobile();
 
   return (
-    <div className="flex justify-between items-center p-2">
-      <div className={`flex ${isMobile ? "sm:gap-10 gap-3" : "gap-8"} text-m`}>
+    <div className="flex justify-between items-center p-2 bg-top">
+      <div className={`flex bg-top ${isMobile ? "sm:gap-10 gap-3" : "gap-8"} text-m`}>
         <button
           className={`flex items-center gap-3 bg_gray h-10 justify-center rounded ${
             isMobile ? "icon-button" : "min-w-[111px]"
